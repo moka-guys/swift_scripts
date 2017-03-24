@@ -1,0 +1,25 @@
+#Open two terminals
+
+#Move to Desktop
+
+cd Desktop
+
+#Start the BLAT server in one window
+
+/home/oncology/git/amplivar/bin/linux/gfServer start localhost 8800  /home/oncology/Desktop/Swift/genomes/ucsc.hg19.karyotypic.fa.2bit
+
+#Make sure the following folders exist and are empty
+
+fastq_in, amplivar_out, annovar_out
+
+#Put the fastq files in the fastq_in folder on the desktop
+
+#Run Amplivar in the other Window
+
+/home/oncology/git/amplivar/bin/universal/amplivar_wrapper.sh -m VARIANT_CALLING -i /home/oncology/Desktop/170209_fastq -o /home/oncology/Desktop/170209_amplivar -s /home/oncology/Swift/Desktop/tables/swift_suspects_v1.txt -p /home/oncology/Desktop/Swift/tables/Accel-Amplicon-EGFR-Flanks.txt -d TRUSEQ -t 2 -g /home/oncology/Desktop/Swift/genomes/ucsc.hg19.karyotypic.fa -x localhost -y 8800 -1 1 -k 1
+
+/home/oncology/Desktop/Swift/scripts/batch_annotate3.pl
+
+/home/oncology/Desktop/Swift/scripts/batch_parse_annovar.pl
+
+cat /home/oncology/Desktop/170209_annovar/*tsv >report.tsv

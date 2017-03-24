@@ -1,0 +1,1 @@
+sendemail -f gst-tr.mokaguys@nhs.net -t gst-tr.mokaguys@nhs.net michael.neat@viapath.co.uk nicola.foot@viapath.co.uk  -xu SEELASTPASS -xp SEELASTPASS -s email-smtp.eu-west-1.amazonaws.com:587 -o tls=yes -u SWIFT_backup_performed -m  %d %i \nerrors = "%e"
